@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img{
+        height: 50px;
+    }
+    .product{
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+    .wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+</style>
+<body>
+    <a href="{% url 'products' %}"> <button> Previous Page </button></a>
+    <div class="wrapper">
+        {% if cart %}
+            {% for x in cart %}
+            <div class="product">
+                
+                <img src="{{x.image.url}}" alt="">
+                <p> Name: {{x.Name}}</p>
+                <p> Description: {{x.Specs}}</p>
+                <p> Price: ${{x.Price}}</p>
+                <a href="{% url 'delete' x.pk %}"> <Button> delete </Button></a>
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% if msg %}
+            <div> {{msg}}</div>
+        {% endif %}
+    </div>
+    {% if total_price != 0 %}
+        <div class="total">
+            <p> Total Price = ${{total_price}}</p>
+        </div>
+    {% endif %}
+</body>
+</html>

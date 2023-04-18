@@ -1,0 +1,12 @@
+{% if products %}
+            {% for x in products %}
+            <div class="product">
+             
+                <p> Name: {{x.Name}}</p>
+                <p> Description: {{x.Specs}}</p>
+                <p> Price: ${{x.Brand}}</p>
+                
+            </div>
+            {% endfor %}
+        {% endif %}
+       
